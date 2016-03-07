@@ -13,7 +13,7 @@ $(document).ready(function(){
         console.log(lat,lon);
         currentURL = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=44db6a862fba0b067b1930da0d769e98&units=metric";
         
-        $.getJSON(current,function(r){
+        $.getJSON(currentURL,function(r){
             results=r;
             console.log(r);
             console.log(r.name);
@@ -24,7 +24,7 @@ $(document).ready(function(){
         });
         forecastURL="http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid=44db6a862fba0b067b1930da0d769e98&units=metric";
         
-        $.getJSON(current,function(r){
+        $.getJSON(forecastURL,function(r){
             results=r;
             console.log(r);
             console.log(r.city.name);
