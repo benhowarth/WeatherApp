@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    APPID="uCLAkI44";
+    APPID="GMaBrS50";
     DEG="c";
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(locationSuccess,locationError);
@@ -11,8 +11,14 @@ $(document).ready(function(){
         lat=position.coords.latitude;
         lon=position.coords.longitude;
         console.log(lat,lon);
-        var geoAPI = 'http://where.yahooapis.com/geocode?location='+lat+','+lon+'&flags=J&gflags=R&appid='+APPID;
-        console.log(geoAPI);
+        geoAPI = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=44db6a862fba0b067b1930da0d769e98";
+        
+        $.getJSON(geoAPI,function(r){
+            results=r;
+            console.log(r);
+            console.log(r.name);
+            console.log(r.weather[0].description);
+        })
         
     }
     function locationError(error){
