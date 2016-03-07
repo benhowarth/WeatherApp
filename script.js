@@ -11,9 +11,9 @@ $(document).ready(function(){
         lat=position.coords.latitude;
         lon=position.coords.longitude;
         console.log(lat,lon);
-        geoAPI = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=44db6a862fba0b067b1930da0d769e98&units=metric";
+        currentURL = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=44db6a862fba0b067b1930da0d769e98&units=metric";
         
-        $.getJSON(geoAPI,function(r){
+        $.getJSON(current,function(r){
             results=r;
             console.log(r);
             console.log(r.name);
@@ -21,7 +21,15 @@ $(document).ready(function(){
             console.log(r.main.temp+"°C");
             console.log(r.main.humidity+"%");
             console.log(r.wind.speed+"m/s");
-        })
+        });
+        forecastURL="http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid=44db6a862fba0b067b1930da0d769e98&units=metric";
+        
+        $.getJSON(current,function(r){
+            results=r;
+            console.log(r);
+            console.log(r.city.name);
+            console.log();
+        });
         
     }
     function locationError(error){
