@@ -21,6 +21,7 @@ $(document).ready(function(){
             console.log(r.main.temp+"°C");
             console.log(r.main.humidity+"%");
             console.log(r.wind.speed+"m/s");
+            console.log(r.dt);
         });
         forecastURL="http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid=44db6a862fba0b067b1930da0d769e98&units=metric";
         
@@ -28,7 +29,17 @@ $(document).ready(function(){
             results=r;
             console.log(r);
             console.log(r.city.name);
-            console.log();
+            tempStr="";
+            descStr="";
+            dtStr="";
+            for(i=0;i<r.list.length;i++){
+                tempStr+=r.list[i].main.temp+", ";
+                descStr+=r.list[i].weather[0].description+", ";
+                dtStr+=r.list[i].dt+", ";
+            }
+            console.log(tempStr);
+            console.log(descStr);
+            console.log(dtStr);
         });
         
     }
