@@ -10,10 +10,16 @@ $(document).ready(function(){
         lat=position.coords.latitude;
         lon=position.coords.longitude;
         console.log(lat,lon);
-        currentURL="http://api.wunderground.com/api/"+APPID+"/conditions/q/"+lat+","+lon+".json";
+        conditionsURL="http://api.wunderground.com/api/"+APPID+"/conditions/q/"+lat+","+lon+".json";
+        astronomyURL="http://api.wunderground.com/api/"+APPID+"/astronomy/q/"+lat+","+lon+".json";
         forecastURL="http://api.wunderground.com/api/"+APPID+"/hourly10day/q/"+lat+","+lon+".json";
         
-        $.getJSON(currentURL,function(r){
+        $.getJSON(conditionsURL,function(r){
+            results=r;
+            console.log(r);
+        });
+        
+        $.getJSON(astronomyURL,function(r){
             results=r;
             console.log(r);
         });
